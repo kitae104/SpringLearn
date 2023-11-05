@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container">
+        <div>환영합니다. <span th:text="${name}"></span> 님</div>
+        <hr>
+        <h2>당신의 TODO List는 ....</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>아이디</th>
+                    <th>설명</th>
+                    <th>목표일</th>
+                    <th>완료여부</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="todoDto : ${todoDtoList}">
+                    <td th:text="${todoDto.id}"></td>
+                    <td th:text="${todoDto.description}"></td>
+                    <td th:text="${todoDto.targetDate}"></td>
+                    <td th:text="${todoDto.isDone()}"></td>
+                    <td><a th:href="@{/todo/update/{id}(id=${todoDto.id})}">수정</a></td>
+                    <td><a th:href="@{/todo/delete/{id}(id=${todoDto.id})}">삭제</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <!--<script th:src="@{/webjars/jquery/jquery.min.js}"></script>-->
+</body>
+</html>

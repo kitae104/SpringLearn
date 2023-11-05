@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Login Page</h1>
+        <p>Welcome to the login page!</p>
+        <form method="post">
+            Name: <input type="text" name="name">
+            Password: <input type="password" name="password">
+            <input type="submit" value="Submit">
+        </form>
+        <p th:text="${errorMsg}" style="color: red"></p>
+    </div>
+</body>
+</html>
