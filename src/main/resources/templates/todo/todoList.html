@@ -18,8 +18,8 @@
                     <th>Description</th>
                     <th>Target Date</th>
                     <th>Is Done?</th>
-                    <!--<th>수정</th>
-                    <th>삭제</th>-->
+                    <th>Update</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,8 +28,8 @@
                     <td th:text="${todoDto.description}"></td>
                     <td th:text="${todoDto.targetDate}"></td>
                     <td th:text="${todoDto.isDone()}"></td>
-                    <!--<td><a th:href="@{/todo/update/{id}(id=${todoDto.id})}">수정</a></td>
-                    <td><a th:href="@{/todo/delete/{id}(id=${todoDto.id})}">삭제</a></td>-->
+                    <td><a th:href="@{/todo/update/{id}(id=${todoDto.id})}" class="btn btn-primary">수정</a></td>
+                    <td><a th:href="@{/todo/delete/{id}(id=${todoDto.id})}" class="btn btn-warning">삭제</a></td>
                 </tr>
             </tbody>
         </table>
