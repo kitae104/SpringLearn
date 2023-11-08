@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Todo List</title>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/layout1}">
+<div layout:fragment="content">
     <div class="container">
         <div>Welcome : <span th:text="${name}"></span></div>
         <hr>
-        <h1>Your Todo List....</h1>
+        <h1><b>Your Todo List...</b></h1>
         <table class="table">
             <thead>
                 <tr>
@@ -35,7 +31,5 @@
         </table>
         <a href="/todo/add" class="btn btn-success" >Add Todo</a>
     </div>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
-    <!--<script th:src="@{/webjars/jquery/jquery.min.js}"></script>-->
-</body>
+</div>
 </html>

@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HelloController {
 
     @GetMapping("/")
-    @ResponseBody   // @RestController로 대체 가능
-    public String start() {
-        return "English, 한글, 1234";
+    public String Index() {
+        return "index";
     }
 
     @RequestMapping("hello")

@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-@SessionAttributes("name")
 public class LoginController {
 
-    private final AuthenticationService authenticationService;
     @GetMapping("/log")
     public void log(@RequestParam("aa") String aa){
         log.debug("Debugging log" + aa);
@@ -31,12 +29,9 @@ public class LoginController {
 
     @PostMapping("/login")
     public String loginPost(LoginDto loginDto, Model model) {
-        if(!authenticationService.authenticate(loginDto.getName(), loginDto.getPassword())){
-            model.addAttribute("errorMsg", "아이디와 비밀번호를 확인후 다시 시도해 주세요.");
-            return "login/login";
-        }
+        log.info("loginDto : " + loginDto);
         model.addAttribute("loginDto", loginDto);
-        model.addAttribute("name", loginDto.getName());
+        model.addAttribute("email", loginDto.getEmail());
         return "login/welcome";
     }
 }
