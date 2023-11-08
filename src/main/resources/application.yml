@@ -13,6 +13,11 @@ server:
 # Spring Setting
 #################################
 spring:
+  mvc:
+    format:
+      date: yyyy-MM-dd
+      date-time: yyyy-MM-dd HH:mm:ss
+
   banner:
     location: banner/banner.txt
 
