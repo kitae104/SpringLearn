@@ -22,6 +22,7 @@ public class Todo extends BaseEntity {
     @Column(name = "todo_id")
     private Long id;                    // 아이디
 
+    @Column(name="name")
     private String username;            // 사용자 이름
 
     private String description;         // 할 일 내용

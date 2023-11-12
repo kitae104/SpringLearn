@@ -18,8 +18,9 @@ public class TodoService {
     private final ModelMapper modelMapper;              // ModelMapper 객체를 주입받음
 
     public List<TodoDto> findByUsername(String username) {
-        List<Todo> todoList = todoRepository.findByUsername(username);
-        List<TodoDto> todoDtoList = Todo.toDtoList(todoList);
+        List<Todo> todoList = todoRepository.findByUsername(username);  // TodoRepository의 findByUsername() 메소드를 호출하여
+                                                                        // username에 해당하는 Todo 객체를 가져옴
+        List<TodoDto> todoDtoList = Todo.toDtoList(todoList);           // Todo 객체 리스트를 TodoDto 객체 리스트로 변환
         return todoDtoList;
     }
 

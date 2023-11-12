@@ -44,6 +44,13 @@ spring:
     password: 1234
 
   #################################
+  # MySQL Setting
+  #################################
+#  datasource:
+#    url: jdbc:h2:mem:testdb
+
+
+  #################################
   # JPA Setting
   #################################
   jpa:
@@ -56,7 +63,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-    database-platform: org.hibernate.dialect.MySQLDialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
 
   ###############################
   # Security User
@@ -72,7 +79,7 @@ spring:
 logging:
   level:
     org:
-      springframework: debug
+      springframework: info
       hibernate:
         type:
           descriptor:

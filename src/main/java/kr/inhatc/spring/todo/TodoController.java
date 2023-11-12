@@ -22,37 +22,40 @@ public class TodoController {
 
     @GetMapping("/todo/list")
     public String showAllTodoListPage(Model model) {
-        String name = "";
 
+        List<TodoDto> todoDtoList = todoService.findByUsername(getLoginUserName());
+        model.addAttribute("todoDtoList", todoDtoList);
+        model.addAttribute("name", getLoginUserName());
+        return "todo/todoList";
+    }
+
+    private static String getLoginUserName() {
+        String name = "";
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication != null) {
             name = authentication.getName();
         }
-
-        List<TodoDto> todoDtoList = todoService.findByUsername(name);
-        model.addAttribute("todoDtoList", todoDtoList);
-        model.addAttribute("name", name);
-        return "todo/todoList";
+        return name;
     }
 
     @GetMapping("/todo/add")
     public String showAddTodoPage(Model model) {
-        model.addAttribute("todoDto", new TodoDto());
+        TodoDto todoDto = new TodoDto();
+        todoDto.setUsername(getLoginUserName());
+        model.addAttribute("todoDto", todoDto);
         return "todo/todoAdd";
     }
 
     @PostMapping("/todo/add")
     public String addTodo(@Valid TodoDto todoDto, BindingResult bindingResult,
-                          @ModelAttribute("name")String name, Model model) {
+                          Model model) {
 
         if(bindingResult.hasErrors()) {
             return "todo/todoAdd";
         }
 
         try {
-            todoDto.setUsername(name);
-            todoDto.setTargetDate(LocalDate.now().plusYears(1));
-            todoDto.setDone(false);
+            log.info("==================todoDto: {}", todoDto);
             todoService.add(todoDto);
         } catch(Exception e) {
             model.addAttribute("errorMessage", e.getMessage());
